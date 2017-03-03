@@ -31,8 +31,6 @@ database.ref().on("child_added", function(snapshot) {
 		var end = moment(startDate); // start date
 		var duration = moment.duration(now.diff(end));
 		var months = duration.asMonths();
-		//console.log(months)
-
 
 		var newRow = $("<tr>");
 		var newName = $("<td>");
@@ -63,28 +61,26 @@ $("#submit-btn").on("click", function(event) {
 	event.preventDefault();
 
 	var employeeName = $("#employee-name").val().trim();
-	//console.log(employeeName);
+	
 	var employeeRole = $("#employee-role").val().trim();
-	//console.log(employeeRole);
+	
 	var startDate = $("#start-date").val().trim();
-	//console.log(startDate);
-	var newDate = moment().subtract(10, 'days').calendar();
-	//console.log(newDate);
+	
 	var monthsWorked;
 	var monthlyRate = $("#monthly-rate").val().trim();
-	//console.log(monthlyRate);
-	
 
 	var now = moment(new Date()); //todays date
-	//console.log(now);
+	
 	var end = moment(startDate); // another date
 	var duration = moment.duration(now.diff(end));
 	monthsWorked = duration.asMonths();
-	//console.log(months)
+	//Math.round(monthsWorked);
 
 	var totalBilled = monthlyRate * monthsWorked;
+	//Math.round(monthsWorked);
 
-	var newRow = $("<tr>");
+
+	/*var newRow = $("<tr>");
 	var newName = $("<td>");
 	var newRole = $("<td>");
 	var newDate = $("<td>");
@@ -101,7 +97,7 @@ $("#submit-btn").on("click", function(event) {
 
 	newRow.append(newName, newRole, newDate, newMonths, newRate, newTotal);
 
-	$("#employee-table").append(newRow);
+	$("#employee-table").append(newRow);*/
 
 
 	database.ref().push({
