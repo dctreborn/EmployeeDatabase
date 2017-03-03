@@ -1,4 +1,4 @@
-/*var config = {
+var config = {
     apiKey: "AIzaSyAfrk7HHCm1qZYlyHgzif0umHkwvcC-oho",
     authDomain: "groupproject-d2bdc.firebaseapp.com",
     databaseURL: "https://groupproject-d2bdc.firebaseio.com",
@@ -16,7 +16,7 @@ database.ref().on("value", function(snapshot) {
 
 }, function(errorObject) {
   console.log("The read failed: " + errorObject.code);
-});*/
+});
 
 $("#submit-btn").on("click", function(event) {
 
