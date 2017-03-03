@@ -44,7 +44,7 @@ $("#submit-btn").on("click", function(event) {
 	newName.text(employeeName);
 	newRole.text(employeeRole);
 	newDate.text(startDate);
-	newDate.text(monthlyRate);
+	newRate.text(monthlyRate);
 
 	newRow.append(newName, newRole, newDate, newRate);
 
