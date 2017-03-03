@@ -12,7 +12,7 @@ var database = firebase.database();
 
 database.ref().on("child_added", function(snapshot) {
 
-	if ( ( snapshot.child("name").exists() ) && (snapshot.child("role").exists()) && (snapshot.child("startDate").exists()) && (snapshot.child("months").exists()) && (snapshot.child("monthlyRate").exists()) && (snapshot.child("totalBilled").exists())){
+	if ( ( snapshot.child("name").exists() ) && (snapshot.child("role").exists()) && (snapshot.child("startDate").exists()) && (snapshot.child("monthsWorked").exists()) && (snapshot.child("monthlyRate").exists()) && (snapshot.child("totalBilled").exists())){
 
 		var employeeName = snapshot.val().name;
 		
@@ -20,7 +20,7 @@ database.ref().on("child_added", function(snapshot) {
 		
 		var startDate = snapshot.val().startDate;
 		
-		var monthsWorked = snapshot.val().months;
+		var monthsWorked = snapshot.val().monthsWorked;
 
 		var monthlyRate = snapshot.val().monthlyRate;
 		
@@ -71,7 +71,7 @@ $("#submit-btn").on("click", function(event) {
 
 	var now = moment(new Date()); //todays date
 	
-	var end = moment(startDate); // another date
+	var end = moment(startDate); // start date
 	var duration = moment.duration(now.diff(end));
 	monthsWorked = duration.asMonths();
 	monthsWorked = Math.round(monthsWorked);
@@ -84,7 +84,7 @@ $("#submit-btn").on("click", function(event) {
         name: employeeName,
         role: employeeRole,
         startDate: startDate,
-        months: monthsWorked,
+        monthsWorked: monthsWorked,
         monthlyRate: monthlyRate,
         totalBilled: totalBilled
     });
