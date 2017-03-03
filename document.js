@@ -74,32 +74,12 @@ $("#submit-btn").on("click", function(event) {
 	var end = moment(startDate); // another date
 	var duration = moment.duration(now.diff(end));
 	monthsWorked = duration.asMonths();
-	//Math.round(monthsWorked);
+	monthsWorked = Math.round(monthsWorked);
 
 	var totalBilled = monthlyRate * monthsWorked;
-	//Math.round(monthsWorked);
+	totalBilled = Math.round(totalBilled);
 
-
-	/*var newRow = $("<tr>");
-	var newName = $("<td>");
-	var newRole = $("<td>");
-	var newDate = $("<td>");
-	var newMonths = $("<td>");
-	var newRate = $("<td>");
-	var newTotal = $("<td>");
-
-	newName.text(employeeName);
-	newRole.text(employeeRole);
-	newDate.text(startDate);
-	newMonths.text(monthsWorked);
-	newRate.text(monthlyRate);
-	newTotal.text(totalBilled);
-
-	newRow.append(newName, newRole, newDate, newMonths, newRate, newTotal);
-
-	$("#employee-table").append(newRow);*/
-
-
+	// push new employee infro to database to be written on the page
 	database.ref().push({
         name: employeeName,
         role: employeeRole,
