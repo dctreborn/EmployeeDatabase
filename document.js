@@ -10,9 +10,38 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-database.ref().on("value", function(snapshot) {
+database.ref().on("child_added", function(snapshot) {
 
-	
+	if ( ( snapshot.child("name").exists() ) && (snapshot.child("role").exists()) && (snapshot.child("startDate").exists()) && (snapshot.child("monthlyRate").exists())){
+
+		var employeeName = snapshot.val().name;
+		console.log(employeeName);
+		var employeeRole = snapshot.val().role;
+		console.log(employeeRole);
+		var startDate = snapshot.val().startDate;
+		console.log(startDate);
+		var newDate = moment().subtract(10, 'days').calendar();
+		console.log(newDate);
+		var monthsWorked;
+		var monthlyRate = snapshot.val().monthlyRate;
+		console.log(monthlyRate);
+		var totalBilled = monthlyRate * monthsWorked;
+
+		var newRow = $("<tr>");
+		var newName = $("<td>");
+		var newRole = $("<td>");
+		var newDate = $("<td>");
+		var newRate = $("<td>");
+
+		newName.text(employeeName);
+		newRole.text(employeeRole);
+		newDate.text(startDate);
+		newRate.text(monthlyRate);
+
+		newRow.append(newName, newRole, newDate, newRate);
+
+		$("#employee-table").append(newRow);
+	}
 
 }, function(errorObject) {
   console.log("The read failed: " + errorObject.code);
