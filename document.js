@@ -27,7 +27,6 @@ database.ref().on("child_added", function(snapshot) {
 		var totalBilled = snapshot.val().totalBilled;
 
 		var now = moment(new Date()); //todays date
-		
 		var end = moment(startDate); // start date
 		var duration = moment.duration(now.diff(end));
 		var months = duration.asMonths();
@@ -66,14 +65,12 @@ $("#submit-btn").on("click", function(event) {
 	
 	var startDate = $("#start-date").val().trim();
 	
-	var monthsWorked;
 	var monthlyRate = $("#monthly-rate").val().trim();
 
 	var now = moment(new Date()); //todays date
-	
 	var end = moment(startDate); // start date
 	var duration = moment.duration(now.diff(end));
-	monthsWorked = duration.asMonths();
+	var monthsWorked = duration.asMonths();
 	monthsWorked = Math.round(monthsWorked);
 
 	var totalBilled = monthlyRate * monthsWorked;
